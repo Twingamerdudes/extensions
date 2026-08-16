@@ -10,7 +10,7 @@
     throw new Error("Modals must run unsandboxed");
   }
 
-  const ID = "placeNameHereIgModals"
+  const ID = "placeNameHereIgModals";
 
   let buttonPressed = "";
   let isModalOpen = false;
@@ -387,7 +387,9 @@
 
           //Preview text placeholder's color
           var pcss =
-            "#" + ID + "_modalInput::placeholder { color: " +
+            "#" +
+            ID +
+            "_modalInput::placeholder { color: " +
             args.TCOLOR +
             "; opacity: 0.5; }";
           var styleElement = document.createElement("style");

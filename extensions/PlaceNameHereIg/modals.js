@@ -1,7 +1,7 @@
 // Name: Modals
-// ID: twinGamerModals
+// ID: placeNameHereIgModals
 // Description: Adds support for HTML modals.
-// By: Twingamerdudes <https://scratch.mit.edu/users/twingamerdudesreal/>
+// By: PlaceNameHereIg <https://scratch.mit.edu/users/twingamerdudesreal/>
 // License: MPL-2.0
 (function (Scratch) {
   "use strict";
@@ -9,6 +9,8 @@
   if (!Scratch.extensions.unsandboxed) {
     throw new Error("Modals must run unsandboxed");
   }
+
+  const ID = "placeNameHereIgModals"
 
   let buttonPressed = "";
   let isModalOpen = false;
@@ -52,7 +54,7 @@
   class Modals {
     getInfo() {
       return {
-        id: "twinGamerModals",
+        id: ID,
         name: Scratch.translate("Modals"),
         color1: "#a01c1c",
         color2: "#861515",
@@ -255,7 +257,7 @@
     changeDefaultModalText(args) {
       if (isModalOpen) {
         const defaultModalText = args.TEXT;
-        const text = document.getElementById("twinGamerModals_modalText");
+        const text = document.getElementById(ID + "_modalText");
         text.textContent = defaultModalText;
       }
     }
@@ -281,7 +283,7 @@
 
         button.addEventListener("click", function () {
           buttonPressed = buttonName;
-          util.startHats("twinGamerModals_whenButtonPressed");
+          util.startHats(ID + "_whenButtonPressed");
         });
         modal.appendChild(button);
       }
@@ -316,14 +318,14 @@
         const close = modalInformation.closeButton;
 
         const text = document.createElement("p");
-        text.id = "twinGamerModals_modalText";
+        text.id = ID + "_modalText";
         text.textContent = args.TEXT;
 
         modal.appendChild(text);
 
         //Create Close Button
         close.addEventListener("click", function () {
-          util.startHats("twinGamerModals_modalClose");
+          util.startHats(ID + "_modalClose");
 
           isModalOpen = false;
           modal.close();
@@ -335,7 +337,7 @@
         modal.showModal();
         isModalOpen = true;
 
-        util.startHats("twinGamerModals_modalOpen");
+        util.startHats(ID + "_modalOpen");
       }
     }
 
@@ -349,14 +351,14 @@
           const close = modalInformation.closeButton;
 
           const text = document.createElement("p");
-          text.id = "twinGamerModals_modalText";
+          text.id = ID + "_modalText";
           text.textContent = args.TEXT;
 
           modal.appendChild(text);
 
           //Create Close Button
           close.addEventListener("click", function () {
-            util.startHats("twinGamerModals_modalClose");
+            util.startHats(ID + "_modalClose");
             isModalOpen = false;
             modal.close();
             modal.remove();
@@ -367,10 +369,10 @@
           //Create input
           var input = document.createElement("input");
           input.placeholder = args.PLACEHOLDER;
+          input.type = "text";
+          input.id = ID + "_modalInput";
 
           //Input's CSS
-          input.type = "text";
-          input.id = "twinGamerModals_modalInput";
           input.style.width = "100%";
           input.style.margin = "10px 0";
           input.style.padding = "5px";
@@ -385,7 +387,7 @@
 
           //Preview text placeholder's color
           var pcss =
-            "#twinGamerModals_modalInput::placeholder { color: " +
+            "#" + ID + "_modalInput::placeholder { color: " +
             args.TCOLOR +
             "; opacity: 0.5; }";
           var styleElement = document.createElement("style");
@@ -396,8 +398,8 @@
           var submit = document.createElement("button");
           submit.innerHTML = "Submit";
           submit.addEventListener("click", function () {
-            util.startHats("twinGamerModals_modalClose");
-            const input = document.getElementById("twinGamerModals_modalInput");
+            util.startHats(ID + "_modalClose");
+            const input = document.getElementById(ID + "_modalInput");
             isModalOpen = false;
 
             // @ts-ignore
@@ -430,7 +432,7 @@
           modal.showModal();
           isModalOpen = true;
 
-          util.startHats("twinGamerModals_modalOpen");
+          util.startHats(ID + "_modalOpen");
         } else {
           return reject("NaN");
         }
